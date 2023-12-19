@@ -11,5 +11,8 @@ public class Main {
         for(File file: files){
             indexFiller.fillInvertedIndex(file);
         }
+        Set<String> filePaths = indexFiller.getInvertedIndex().getFilesByWord("song");
+        System.out.println(filePaths.size());
+        System.out.println(filePaths.toArray()[0]);
     }
 }

@@ -14,4 +14,7 @@ public class InvertedIndex {
             map.put(word,files);
         }
     }
+    public Set<String> getFilesByWord(String word){
+        return map.get(word);
+    }
 }
