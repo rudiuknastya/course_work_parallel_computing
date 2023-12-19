@@ -7,5 +7,9 @@ public class Main {
         FilesReader filesReader = new FilesReader();
         List<File> files = filesReader.getFilesFromDirectory();
         System.out.println(files.size());
+        IndexFiller indexFiller = new IndexFiller();
+        for(File file: files){
+            indexFiller.fillInvertedIndex(file);
+        }
     }
 }
