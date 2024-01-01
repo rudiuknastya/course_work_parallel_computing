@@ -4,17 +4,17 @@ import java.util.Map;
 import java.util.Set;
 
 public class InvertedIndex {
-    private Map<String, Set<String>> map = new HashMap<>();
-    public void addWordAndFile(String word, String filePath){
+    private Map<String, Set<Integer>> map = new HashMap<>();
+    public void addWordAndDocumentId(String word, Integer documentId){
         if(map.containsKey(word)){
-            map.get(word).add(filePath);
+            map.get(word).add(documentId);
         } else {
-            Set<String> files = new HashSet<>();
-            files.add(filePath);
-            map.put(word,files);
+            Set<Integer> documents = new HashSet<>();
+            documents.add(documentId);
+            map.put(word,documents);
         }
     }
-    public Set<String> getFilesByWord(String word){
+    public Set<Integer> getDocumentIdsByWord(String word){
         return map.get(word);
     }
 }
