@@ -14,7 +14,7 @@ public class IndexFiller {
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line = reader.readLine();
             while (line != null) {
-                String[] lineWords = line.split("\\W+");
+                String[] lineWords = line.split("[^a-zA-Z0-9]+");
                 for (String word : lineWords) {
                     invertedIndex.addWordAndFile(word, file.getPath());
                 }
