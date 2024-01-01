@@ -2,9 +2,10 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class InvertedIndex {
-    private Map<String, Set<Integer>> map = new HashMap<>();
+    private final Map<String, Set<Integer>> map = new ConcurrentHashMap<>();
     public void addWordAndDocumentId(String word, Integer documentId){
         if(map.containsKey(word)){
             map.get(word).add(documentId);
