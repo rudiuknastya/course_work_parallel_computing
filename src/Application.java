@@ -43,4 +43,16 @@ public class Application {
             documentIds.forEach((documentId) -> System.out.println(documentsAndIds.get(documentId)));
         }
     }
+
+    public void launch() {
+        createInvertedIndex(8);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введіть слово/слова для пошуку або слово 'Стоп' для зупинки: ");
+        String wordsToFind = scanner.nextLine();
+        while(!wordsToFind.equals("Стоп")) {
+            printDocuments(wordsToFind);
+            System.out.println("Введіть слово/слова для пошуку або слово 'Стоп' для зупинки: ");
+            wordsToFind = scanner.nextLine();
+        }
+    }
 }
