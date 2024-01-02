@@ -7,6 +7,7 @@ public class Application {
     private FilesReader filesReader = new FilesReader();
     public void createInvertedIndex(int threadsQuantity) {
         List<File> files = filesReader.getFilesFromDirectory();
+        indexFiller.setInvertedIndex(new InvertedIndex());
         IndexThread threads[] = new IndexThread[threadsQuantity];
         int size = files.size();
         double s = (double) size / (double) threadsQuantity;

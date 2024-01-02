@@ -4,7 +4,11 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class IndexFiller {
-    private InvertedIndex invertedIndex = new InvertedIndex();
+    private InvertedIndex invertedIndex;
+
+    public void setInvertedIndex(InvertedIndex invertedIndex) {
+        this.invertedIndex = invertedIndex;
+    }
 
     public InvertedIndex getInvertedIndex() {
         return invertedIndex;
