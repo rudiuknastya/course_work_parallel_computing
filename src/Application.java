@@ -34,11 +34,11 @@ public class Application {
     }
     private void printDocuments(String wordsToFind) {
         String[] words = wordsToFind.split(" ");
-        Set<Integer> documentIds = indexFiller.getInvertedIndex().getDocumentIdsByWord(words[0]);
+        Set<Integer> documentIds = indexFiller.getInvertedIndex().getDocumentIdsByWord(words[0].toLowerCase());
         if (words.length != 1) {
             for (int i = 1; i < words.length; i++) {
-                Set<Integer> filePath = indexFiller.getInvertedIndex().getDocumentIdsByWord(words[i]);
-                documentIds.retainAll(filePath);
+                Set<Integer> documentIdsByWord = indexFiller.getInvertedIndex().getDocumentIdsByWord(words[i].toLowerCase());
+                documentIds.retainAll(documentIdsByWord);
             }
         }
         if (documentIds == null || documentIds.isEmpty()) {
