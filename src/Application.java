@@ -17,6 +17,7 @@ public class Application {
             threads[i] = new IndexThread(indexFiller, j, (int) (i * s + k), files, documentsAndIds);
             j = (int) ((double) i * s + k);
         }
+        long start = System.nanoTime();
         for (IndexThread thread : threads) {
             thread.start();
         }
@@ -27,6 +28,9 @@ public class Application {
                 throw new RuntimeException(e);
             }
         }
+        long finish = System.nanoTime();
+        long timeElapsed = finish - start;
+        System.out.println("Thread numbers: "+ threadsQuantity +" Time = " + timeElapsed / 1000000);
     }
     private void printDocuments(String wordsToFind) {
         String[] words = wordsToFind.split(" ");
@@ -46,8 +50,11 @@ public class Application {
     }
 
     public void launch() {
-        createInvertedIndex(8);
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Введіть кількість потоків для заповнення інвертованого індексу: ");
+        int threadsQuantity = scanner.nextInt();
+        scanner.nextLine();
+        createInvertedIndex(threadsQuantity);
         System.out.println("Введіть слово/слова для пошуку або слово 'Стоп' для зупинки: ");
         String wordsToFind = scanner.nextLine();
         while(!wordsToFind.equals("Стоп")) {
